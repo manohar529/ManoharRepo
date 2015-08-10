@@ -1,5 +1,6 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="/test_codes/webserver/jquery-cookie-master/src/jquery.cookie.js"></script>
 
 <script>
 $(document).ready(function()
@@ -18,15 +19,14 @@ $(document).ready(function()
         console.log(JSON.stringify(errorThrown));
       },
       success: function (data) {
-		  
-		  
-		  
-		  
+
 		  
 		   $.ajax({
      url: "http://183.82.96.212:8080/mobile_services/?q=my_services/user/logout.json",
      type: 'post',
+    xhrFields: {withCredentials: true},
      dataType: 'json',
+	 Cookie: name='value',
      error: function (XMLHttpRequest, textStatus, errorThrown) {
        alert('button_logout - failed to logout');
        console.log(JSON.stringify(XMLHttpRequest));
@@ -48,6 +48,8 @@ $(document).ready(function()
   });
   
 
+  
+  
 
 });
 </script>
