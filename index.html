@@ -1,10 +1,49 @@
-<html>
-<head>
-<script type="text/javascript">
-    
-	window.onload = function(){  
-	
-         window.location = 'http://183.82.96.212:8081/';
- }
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function()
+{
+
+
+  $.ajax({
+      url: "http://183.82.96.212:8080/mobile_services/?q=m_service/user/login",
+      type: 'post',
+      data: 'username=user1&password=softima123',
+      dataType: 'json',
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert('page_login_submit - failed to login');
+        console.log(JSON.stringify(XMLHttpRequest));
+        console.log(JSON.stringify(textStatus));
+        console.log(JSON.stringify(errorThrown));
+      },
+      success: function (data) {
+     alert('Sucess to login');
+      }
+  });
+  
+ $.ajax({
+     url: "http://183.82.96.212:8080/mobile_services/?q=my_services/user/logout.json",
+     type: 'post',
+     dataType: 'json',
+     error: function (XMLHttpRequest, textStatus, errorThrown) {
+       alert('button_logout - failed to logout');
+       console.log(JSON.stringify(XMLHttpRequest));
+       console.log(JSON.stringify(textStatus));
+       console.log(JSON.stringify(errorThrown));
+     },
+     success: function (data) {
+       alert("You have been logged out.");
+
+     }
+ });
+
+
+});
 </script>
-</head><body></body>
+
+<?php
+session_start();
+echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+
+?>
