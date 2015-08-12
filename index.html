@@ -9,7 +9,8 @@ $(document).ready(function()
 
 $("#sucess_id").hide();
 
-
+var url      = window.location.href; 
+alert(url);
 
 	$.ajax({
  url:"http://183.82.96.212:8080/mobile_services/?q=m_service/user/login",
