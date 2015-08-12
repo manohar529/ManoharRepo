@@ -5,6 +5,9 @@
 $(document).ready(function()
 {
   
+
+$("#sucess_id").hide();
+
   $.ajaxSetup({
         xhrFields: {
             withCredentials: true
@@ -47,6 +50,7 @@ alert(token);
                 alert(errorThrown);
               },
               success: function (data) {
+			  $("#sucess_id").show();
                 alert(data.Peter);
               }
             });
@@ -67,3 +71,9 @@ alert(token);
 
 });
 </script>
+
+
+<img src="sucess.gif" alt="Smiley face" id="sucess_id" height="342" width="200">
+
+
+
