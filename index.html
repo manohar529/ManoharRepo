@@ -19,6 +19,7 @@ alert(url);
  dataType:"json",	
  success:function(data)
  {
+ console.log(this.accepts);
  	alert("Data from Server"+JSON.stringify(data));
  	
 					window.location="2.html";
