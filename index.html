@@ -1,5 +1,6 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="global.js"></script>
        
 <script>
 $(document).ready(function()
@@ -8,11 +9,7 @@ $(document).ready(function()
 
 $("#sucess_id").hide();
 
-  $.ajaxSetup({
-        xhrFields: {
-            withCredentials: true
-        }
-    });
+
 
 	$.ajax({
  url:"http://183.82.96.212:8080/mobile_services/?q=m_service/user/login",
@@ -23,39 +20,7 @@ $("#sucess_id").hide();
  {
  	alert("Data from Server"+JSON.stringify(data));
  	
-	
-	
-		     // Obtain session token.
-        $.ajax({
-          url:"http://183.82.96.212:8080/services/session/token",
-          type:"get",
-          dataType:"text",
-          error:function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
-          },
-          success: function (token) {   
-
-alert(token);		  
-            $.ajax({
-              url: 'http://183.82.96.212:8080/m_service/m_resources/get_schedules',
-              type: "POST",
-			  data: 'device_uuid=2000',
-              dataType: "json",
-              beforeSend: function (request) {
-                request.setRequestHeader("X-CSRF-Token", token);
-       		
-              },
-			  
-              error: function (jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-              },
-              success: function (data) {
-			  $("#sucess_id").show();
-                alert(data.Peter);
-              }
-            });
-          }
-        }); 
+					window.location="2.html";
  	
  },
  error:function(jqXHR,textStatus,errorThrown)
